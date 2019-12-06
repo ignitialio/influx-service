@@ -1,0 +1,19 @@
+version: '3.3'
+
+services:
+  influx:
+    image: ignitial/influx:${SVC_VERSION}
+    container_name: influx
+    ports:
+      - ${IIOS_DOCKER_EXPORTED_PORTS}
+    environment:
+      - IIOS_REDIS_HOST=redis
+      - IIOS_NAMESPACE=${IIOS_NAMESPACE}
+      - IIOS_SERVER_HOST=influx
+      - IIOS_SERVER_PORT=${IIOS_SERVER_PORT}
+    networks:
+      infra:
+
+networks:
+  infra:
+    external: true

@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: influx
+  labels:
+    app: influx
+spec:
+  replicas: "{{$.iios.app.replicas}}"
+  selector:
+    matchLabels:
+      app: influx
+  template:
+    metadata:
+      labels:
+        app: influx
+    spec:
+      containers:
+      - name: influx
+        image: "ignitial/influx:{{$.iios.app.version}}"
+        imagePullPolicy: "{{$.iios.app.imagePullPolicy}}"
+        volumeMounts:
+        - name: config-volume
+          mountPath: /opt/influx/server/config/generated
+        ports: "{{$.iios.app.ports}}"
+      imagePullSecrets:
+        - name: regcred
+      volumes:
+        - name: config-volume
+          configMap:
+            name: influx-config
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: influx
+spec:
+  selector:
+    app: influx
+  ports:
+  - name: http
+    port: "{{$.iios.app.ports[0].containerPort}}"
+    targetPort: "{{$.iios.app.ports[0].containerPort}}"
