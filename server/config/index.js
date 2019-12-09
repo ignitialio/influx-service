@@ -113,6 +113,19 @@ module.exports = {
     /* indicates that service is behind an HTTPS proxy */
     https: false,
   },
+  influx: {
+    hosts: [
+      {
+        host: process.env.IIOS_INFLUX_HOST || 'influxdb',
+        port: process.env.IIOS_INFLUX_PORT ? parseInt(process.env.IIOS_INFLUX_PORT) : 8086,
+        protocol: process.env.IIOS_INFLUX_PROTOCOL || 'http',
+        options: process.env.IIOS_INFLUX_OPTIONS
+      }
+    ],
+    database: process.env.IIOS_INFLUX_DBNAME,
+    username: process.env.IIOS_INFLUX_USERNAME,
+    password: process.env.IIOS_INFLUX_PASSWORD
+  },
   /* options published through discovery mechanism */
   publicOptions: {
     /* declares component injection */
