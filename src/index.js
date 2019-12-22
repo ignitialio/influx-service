@@ -12,7 +12,7 @@ global.iios_influx = function(Vue) {
     Vue.prototype.$services.emit('app:menu:add', [
       {
         path: '/service-influx',
-        title: 'Influx Service view',
+        title: 'Timeseries',
         svgIcon: '$$service(influx)/assets/influx.svg',
         section: 'Services',
         anonymousAccess: true,

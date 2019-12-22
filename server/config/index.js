@@ -136,24 +136,24 @@ module.exports = {
       icon: 'assets/influx-64.png',
       /* Internationalization: see Ignitial.io Web App */
       i18n: {
-        'My amazing component': [ 'Mon super composant' ],
-        'Provides uber crazy services':  [
-          'Fournit des services super hyper dingues'
+        'Timeseries database': [ 'Base de données temporelles' ],
+        'InfluxDB based timeseries':  [
+          'Séries temporelles avec InfluxDB'
         ],
         'Insert here your own UI components': [
           'Insérer ici vos propres composants'
         ],
-        'Influx Service view': [
-          'Vue du service Influx'
+        'Timeseries': [
+          'Série temporelles'
         ]
       },
       /* eventually any other data */
-      title: 'My amazing component',
-      info: 'Provides uber crazy services'
+      title: 'Timeseries database',
+      info: 'Base de données temporelles'
     },
-    /* domain related public options: could be any JSON object*/
-    myPublicOption: {
-      someOptions: {}
-    }
+    /* can be an worflow (Chaman) block */
+    workflow: {
+      types: [ 'Source', 'Destination' ]
+    },
   }
 }
